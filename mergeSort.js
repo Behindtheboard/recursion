@@ -1,31 +1,31 @@
-function merge(a, b) {
-  let c = [];
-  i = 0;
-  j = 0;
-  k = 0;
-  while (i < a.length && j < b.length) {
-    if (a[i] < b[j]) {
-      c[k++] = a[i++];
+function merge(left, right) {
+  let mergedArr = [];
+  let i = 0,
+    j = 0,
+    k = 0;
+  while (i < left.length && j < right.length) {
+    if (left[i] < right[j]) {
+      mergedArr[k++] = left[i++];
     } else {
-      c[k++] = b[j++];
+      mergedArr[k++] = right[j++];
     }
   }
-  for (; i < a.length; i++) {
-    c[k++] = a[i];
+  for (; i < left.length; i++) {
+    mergedArr[k++] = left[i];
   }
-  for (; j < b.length; j++) {
-    c[k++] = b[j];
+  for (; j < right.length; j++) {
+    mergedArr[k++] = right[j];
   }
 
-  return c;
+  return mergedArr;
 }
 
 function mergeSort(arr) {
   x = arr;
   if (arr.length === 1) return arr;
 
-  const m = Math.ceil(arr.length / 2);
-  const y = x.splice(m);
+  const mid = Math.ceil(arr.length / 2);
+  const y = x.splice(mid);
 
   return merge(mergeSort(x), mergeSort(y));
 }
